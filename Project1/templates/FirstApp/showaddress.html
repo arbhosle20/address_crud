@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+<title> all Address</title>
+{% endblock %}
+
+{% block content %}
+<h1 style="text-align: center;"> All Address</h1>
+<center>
+    <table border="4px">
+        <tr>
+            <th>ID</th>
+            <th>Flat_No</th>
+            <th>Street_Name</th>
+            <th>City</th>
+            <th>Pincode</th>
+            <th>Area</th>
+            <th>Landmark</th>
+            <th>District</th>
+            <th>State</th>
+            <th>Country</th>
+        </tr>
+        {% for add in address_list %}
+        <tr>
+            <td>{{add.id}}</td>
+            <td>{{add.flat_no}}</td>
+            <td>{{add.street_name}}</td>
+            <td>{{add.city}}</td>
+            <td>{{add.pincode}}</td>
+            <td>{{add.area}}</td>
+            <td>{{add.landmark}}</td>
+            <td>{{add.district}}</td>
+            <td>{{add.state}}</td>
+            <td>{{add.country}}</td>
+
+            <td>
+                    <a href="{% url 'delete_address' add.id %}">
+                        <button class="btn btn-danger">Delete</button>
+                    </a>
+            </td>
+            <td>
+                    <a href="{% url 'update_address' add.id %}"><button class="btn btn-warning">update</button></a>
+            </td>
+
+
+</center>
+
+
+
+</tr>
+{% endfor %}
+
+</table>
+<br>
+<a href="{%url 'add_address' %}">
+    <button class="btn btn-success"> add address</button>
+</a>
+{% endblock %}

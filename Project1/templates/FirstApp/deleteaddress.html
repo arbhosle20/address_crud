@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+
+    <title>  delete Address</title>
+{% endblock %}
+
+{% block content %}
+    <h1 style="text-align: center:"> Delete Address </h1>
+    <div class="container">
+        <p>
+            are you to delete this address with city -{{add.city}}
+        </p>
+        <form method="post" class="jumbotron">
+            {% csrf_token %}
+            {{form | crispy}}
+            <a href="{% url 'delete_address' add.id %}"><button class="btn btn-danger">Delete</button></a>
+            <br>
+            <br>
+
+            <a href="{% url 'show_address' %}"><button class="'btn btn-success">cancel</button></a>
+         </form>
+    </div>
+
+{% endblock %}
